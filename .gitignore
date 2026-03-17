@@ -1,10 +1,10 @@
-# Dependencies
-calculadora/node_modules/
+# Dependencias
+node_modules/
 
-# Production build
-calculadora/build/
+# Build de producao
+build/
 
-# Environment
+# Variaveis de ambiente
 .env
 .env.local
 .env.development.local
