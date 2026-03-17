@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import './Calculator.css';
 
 function Calculator() {
@@ -91,6 +91,31 @@ function Calculator() {
     setAguardandoNovoValor(false);
     setExpressao('');
   };
+
+  // Ref para manter o handler do teclado sempre atualizado
+  const tratarTecladoRef = useRef();
+  tratarTecladoRef.current = (e) => {
+    const tecla = e.key;
+
+    if (tecla >= '0' && tecla <= '9') {
+      digitarNumero(tecla);
+    } else if (tecla === '.') {
+      digitarPonto();
+    } else if (['+', '-', '*', '/'].includes(tecla)) {
+      selecionarOperacao(tecla);
+    } else if (tecla === 'Enter' || tecla === '=') {
+      e.preventDefault();
+      calcularResultado();
+    } else if (tecla === 'Escape' || tecla === 'Delete') {
+      limpar();
+    }
+  };
+
+  useEffect(() => {
+    const handler = (e) => tratarTecladoRef.current(e);
+    window.addEventListener('keydown', handler);
+    return () => window.removeEventListener('keydown', handler);
+  }, []);
 
   return (
     <div className="calculator">
