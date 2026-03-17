@@ -1,1 +1,73 @@
-/* Styles will be added in commit 3 */
+.calculator {
+  width: 320px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Visor */
+.display {
+  background-color: #9e9e9e;
+  padding: 24px 20px;
+  text-align: right;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.display-value {
+  font-size: 40px;
+  font-weight: 300;
+  color: #fff;
+  letter-spacing: 1px;
+}
+
+/* Grade de botoes */
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background-color: #d4d4d2;
+}
+
+/* Botao base */
+.btn {
+  padding: 22px 0;
+  font-size: 22px;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  transition: filter 0.15s;
+}
+
+.btn:active {
+  filter: brightness(0.85);
+}
+
+/* Botoes numericos */
+.btn-number {
+  background-color: #e0e0de;
+  color: #333;
+}
+
+/* Botoes de operacao */
+.btn-operator {
+  background-color: #f5923a;
+  color: #fff;
+  font-size: 24px;
+}
+
+/* Botao limpar */
+.btn-clear {
+  background-color: #d4d4d2;
+  color: #333;
+  grid-column: span 3;
+  text-align: center;
+}
+
+/* Botao zero ocupa 2 colunas */
+.btn-zero {
+  grid-column: span 2;
+  text-align: center;
+}
