@@ -5,7 +5,7 @@ import './App.css';
 
 function App() {
   return (
-    <BrowserRouter basename="/TODW-PUCPR">
+    <BrowserRouter basename={process.env.PUBLIC_URL || ""}>
       <div className="App">
         <nav className="app-nav">
           <NavLink to="/" end>Calculadora</NavLink>

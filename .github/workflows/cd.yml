@@ -50,3 +50,25 @@ jobs:
       - name: Deploy no GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+  docker:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      - name: Login no DockerHub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build e Push da imagem
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: true
+          tags: |
+            ${{ secrets.DOCKERHUB_USERNAME }}/calculadora:latest
+            ${{ secrets.DOCKERHUB_USERNAME }}/calculadora:${{ github.sha }}
