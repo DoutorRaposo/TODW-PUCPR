@@ -1,6 +1,6 @@
 # Calculadora React
 
-Calculadora simples desenvolvida com React para a disciplina TODW - PUCPR.
+Calculadora simples desenvolvida com React para a disciplina TPDW - PUCPR.
 
 ## Como rodar
 
