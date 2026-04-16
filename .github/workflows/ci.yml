@@ -27,3 +27,21 @@ jobs:
 
       - name: Rodar testes
         run: npm test
+
+  notify-discord:
+    runs-on: ubuntu-latest
+    needs: build-and-test
+    if: always()
+    steps:
+      - name: Enviar alerta ao Discord
+        uses: sarisia/actions-status-discord@v1
+        with:
+          webhook: ${{ secrets.DISCORD_WEBHOOK }}
+          status: ${{ needs.build-and-test.result }}
+          title: "CI - ${{ github.repository }}"
+          description: |
+            Branch: `${{ github.ref_name }}`
+            Commit: `${{ github.sha }}`
+            Autor: ${{ github.actor }}
+            Evento: ${{ github.event_name }}
+          username: GitHub Actions
