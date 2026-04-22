@@ -26,7 +26,7 @@ jobs:
         run: npm run lint --if-present
 
       - name: Rodar testes
-        run: npm test
+        run: npm run test:ci
 
   notify-discord:
     runs-on: ubuntu-latest
